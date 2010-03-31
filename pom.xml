@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.cheney.webdav</groupId>
+	<artifactId>webdav-server</artifactId>
+	<version>0.1-SNAPSHOP</version>
+	<name>webdav-server</name>
+
+	<parent>
+		<groupId>net.cheney</groupId>
+		<artifactId>cheney-base-pom</artifactId>
+		<version>5-SNAPSHOT</version>
+	</parent>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>net.cheney.webdav.server.Startup</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-cli</groupId>
+			<artifactId>commons-cli</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>net.cheney.motown</groupId>
+			<artifactId>motown-protocol-http-async</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.cheney.motown</groupId>
+			<artifactId>motown-server-api</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.cheney.snax</groupId>
+			<artifactId>snax-core</artifactId>
+			<version>0.4.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+	</dependencies>
+</project>
